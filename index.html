@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>冒泡</title>
+  <style>
+    :root{
+      --bgColor:#000
+    }
+    body{
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      background-color:  var(--bgColor);
+      background: var(--bgColor) url('./imgs/bg.jpg')center center no-repeat;
+      background-size: cover;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="game"></canvas>
+  <script src="./Game.js"></script>
+  <script src="./buble.js"></script>
+  <script>
+    // 实例化
+    var game = new Game({
+      "canvasId":"game"
+    });
+    game.init();
+  </script>
+</body>
+</html>
