@@ -49,22 +49,12 @@ class Game{
     callBack && callBack();
   }
 
-  // 更新
-  update(){
-
-  }
-
   // 动画
   animate(){
     var self = this;
-    self.render();
-    self.timer = requestAnimationFrame(self.animate.bind(self));
-  }
-
-  // 渲染
-  render(){
     var bubble = new Bubble();
-    if(bubble.timer) return;
-    bubble.init();
+    requestAnimationFrame(self.animate.bind(self));
+    if(self.timer) return;
+    bubble.start();
   }
 }

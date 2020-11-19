@@ -1,16 +1,14 @@
 class Bubble{
   constructor(){
-    this.x = Math.floor(Math.random()* game.width * 0.4 + game.width * 0.3);
-    this.y = Math.floor(Math.random()* game.height * 0.4 + game.height * 0.3);
+    this.x = Math.floor(Math.random()* game.width * 0.8 + game.width * 0.1);
+    this.y = Math.floor(Math.random()* game.height * 0.8 + game.height * 0.1);
     this.r = Math.floor(Math.random() * 10 + 10);
     this.maxR = 50;
     
-    this.dx = Math.random() * 0.8;
-    this.dy = Math.random() * 0.8;
+    this.dx = Math.random() * 2;
+    this.dy = Math.random() * 1;
 
-    this.speed = Math.random() * 0.3;
-
-    this.timer = null;
+    this.speed = Math.random() * 0.8;
     
     this.isWinning = false;
     
@@ -23,11 +21,6 @@ class Bubble{
     this.maxLineWidth = 8;
 
     game.bubbleList.push(this);
-  }
-
-  // 初始化
-  init(){
-    this.animate();
   }
 
   //更新
@@ -72,8 +65,9 @@ class Bubble{
   }
 
   // 动画
-  animate(){
-    this.timer = setInterval(() => {
+  start(){
+    console.log("冒泡")
+    game.timer = setInterval(() => {
       game.ctx.clearRect(0,0,game.width,game.height);
       for (let i = 0; i < game.bubbleList.length; i++) {
         game.bubbleList[i].update(); 
@@ -86,11 +80,9 @@ class Bubble{
   // 销毁
   destroy(){
     // 超出屏幕外销毁
-    game.bubbleList.filter((item,index,arr) => {
+    game.bubbleList.map((item,index,arr) => {
       if(item === this){
         arr.splice(index,1);
-        clearInterval(item.timer);
-        item.timer = null;
       }
     });
   }
